@@ -1,10 +1,22 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { TypeOrmModule } from '@nestjs/typeorm';
+import { RedisModule } from './redis/redis.module';
+import { MovieModule } from './movie/movie.module';
+import { setupSwagger } from './swagger';
 
 @Module({
-  imports: [],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    TypeOrmModule.forRoot({
+      load: [__dirname + '/**/*.entity{.ts,.js}'],
+      ...require('../ormconfig.postgres.json'),
+    }),
+    RedisModule,
+    MovieModule,
+  ],
 })
-export class AppModule {}
+
+export class AppModule {
+  constructor() {
+    setupSwagger(this);
+  }
+}
