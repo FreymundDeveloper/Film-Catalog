@@ -1,7 +1,6 @@
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { INestApplication } from '@nestjs/common';
 
-export function setupSwagger(app: INestApplication<any>) {
+export function setupSwagger(app) {
   const options = new DocumentBuilder()
     .setTitle('Film Catalog API')
     .setDescription('API to manage a movie catalog.')
