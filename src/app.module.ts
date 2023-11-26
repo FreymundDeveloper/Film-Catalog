@@ -3,8 +3,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { RedisModule } from './redis/redis.module';
 import { MovieModule } from './movie/movie.module';
 import { setupSwagger } from './swagger';
-import { INestApplication } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
 
 @Module({
   imports: [
@@ -18,14 +16,7 @@ import { NestFactory } from '@nestjs/core';
 })
 
 export class AppModule {
-  constructor() {}
-
-  async onApplicationBootstrap() {
-    const app = await NestFactory.create(AppModule);
-    await this.setupSwagger(app);
-  }
-
-  private async setupSwagger(app: INestApplication) {
-    setupSwagger(app);
+  constructor() {
+    setupSwagger(this);
   }
 }
