@@ -12,7 +12,7 @@ import { NestFactory } from '@nestjs/core';
       load: [__dirname + '/**/*.entity{.ts,.js}'],
       ...require('../ormconfig.postgres.json'),
     }),
-    RedisModule,
+    //RedisModule,
     MovieModule,
   ],
 })

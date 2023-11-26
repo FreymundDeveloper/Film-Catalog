@@ -1,12 +1,15 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 
-@Entity()
-export class MovieEntity {
+@Entity( { name: "movies"} )
+export class Movie {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  title: string;
+  name: string;
+
+  @Column()
+  studio: string;
 
   @Column()
   year: number;
