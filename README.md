@@ -12,7 +12,7 @@ About the technologies required and my experience with them:
 * Redis - 2 months of experience;
 * PostgreSQL - First time used in a real application. I already had contact with her in the Database course at college;
 * API RESTful - 1 year and a half of experience and 9 months of professional experience;
-* Deploy Tecnologie - 1 month and a half experience(First contact with Google AppEngine).
+* Deploy Tecnologie - 1 month and a half experience(DigitalOcean and AWS).
 
 ## Running the app
 
@@ -29,7 +29,7 @@ $ npm run start
 
 Application documentation is automatically generated using Swagger. Briefly, this route mapping is structured as follows:
 
-* IP - 
+* IP - Is not working
 * localhost - 3000 (http://localhost:3000/);
 
 Routes:
@@ -59,4 +59,4 @@ In total I spent around 26 hours developing the project. My biggest time consump
 
 * ERROR [TypeOrmModule] Unable to connect to the database. Retrying (1)... 2023-11-26 23:03:31 Error: connect ECONNREFUSED 127.0.0.1:5432
 
-Another 5 hours were consumed in configuring the application deployment process for Google AppEngine and the other 3 hours were used for the development of CRUD itself, along with the configuration of Swagger and Redis.
+Another 5 hours were spent trying to configure the application deployment process for Google AppEngine and the other 3 hours were used to develop CRUD itself, along with configuring Swagger and Redis.
