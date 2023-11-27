@@ -45,9 +45,17 @@ Routes:
 * Update - /movies/update/:name;
 * Delete - /movies/delete/:name;
 
+To perform CRUD, first generate a token through the specified route, then link it to a "Bearer Token" authorization:
+(Postman example: Authorization > Type > Bearer Token)
+
 To access the complete and detailed API documentation, use the Swagger route.
 
-## Docker
+## Docker - Is not working
+
+```bash
+# Build
+$ docker-compose up --build
+```
 
 ## Time spent and difficulties
 
