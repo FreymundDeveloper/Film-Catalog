@@ -1,7 +1,7 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
 import { MovieService } from './movie.service';
-import { CreateMovieDto } from './movie.dto';
+import { CreateMovieDto, ReadMovieDto } from './movie.dto';
 
 @Controller('movies')
 export class MovieController {
@@ -14,8 +14,9 @@ export class MovieController {
     return { message: 'Movie created successfully', movie };
   }
 
-  @Get()
-  getAllMovies() {
-    return 'Get all movies';
+  @Get('read')
+  @UseGuards(JwtAuthGuard)
+  async readMovies(@Query() readMovieDto: ReadMovieDto) {
+    return this.movieService.readMovies(readMovieDto);
   }
 }
