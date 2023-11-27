@@ -1,4 +1,4 @@
-import { Injectable, CanActivate, ExecutionContext } from '@nestjs/common';
+import { Injectable, CanActivate, ExecutionContext, UnauthorizedException } from '@nestjs/common';
 import { Observable } from 'rxjs';
 import { JwtService } from '@nestjs/jwt';
 
@@ -15,8 +15,7 @@ export class JwtAuthGuard implements CanActivate {
 
   private async validateToken(authHeader: string): Promise<boolean> {
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
-      console.log('Invalid Token');
-      return false;
+      throw new UnauthorizedException('Token not provided');
     }
 
     const token = authHeader.split(' ')[1];
@@ -25,8 +24,8 @@ export class JwtAuthGuard implements CanActivate {
       await this.jwtService.verifyAsync(token, { secret: 'The#whale?holed?the#ship' });
       return true;
     } catch (error) {
-      console.error('Erro in token:', error);
-      return false;
+      console.error('Erro in token:', error.message);
+      throw new UnauthorizedException('Invalid token');
     }
   }
 }

@@ -8,7 +8,7 @@ import { JwtAuthGuard } from './jwt-auth.guard';
   imports: [
     JwtModule.register({
       secret: 'The#whale?holed?the#ship',
-      signOptions: { expiresIn: '5m' },
+      signOptions: { expiresIn: '15m' },
     }),
   ],
   providers: [AuthService, JwtAuthGuard],
