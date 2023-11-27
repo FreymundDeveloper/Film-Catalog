@@ -24,4 +24,9 @@ export class UpdateMovieDto {
     @IsOptional()
     year?: number;
 }
+
+export class DeleteMovieDto {
+    @IsNotEmpty()
+    readonly name: string;
+}
   

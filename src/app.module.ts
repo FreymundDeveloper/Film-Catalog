@@ -4,7 +4,8 @@ import { RedisModule } from './redis/redis.module';
 import { MovieModule } from './movie/movie.module';
 import { setupSwagger } from './swagger';
 import { INestApplication } from '@nestjs/common';
-import { NestFactory } from '@nestjs/core';
+import { APP_FILTER, NestFactory } from '@nestjs/core';
+import { AllExceptionsFilter } from './shared/filters/all-exceptions.filter';
 import { AuthModule } from './auth/auth.module';
 
 @Module({
@@ -16,6 +17,12 @@ import { AuthModule } from './auth/auth.module';
     AuthModule,
     RedisModule,
     MovieModule,
+  ],
+  providers: [
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionsFilter,
+    },
   ],
 })
 

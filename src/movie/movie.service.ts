@@ -2,10 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ILike, Repository } from 'typeorm';
 import { Movie } from './movie.entity';
-import { CreateMovieDto, ReadMovieDto, UpdateMovieDto } from './movie.dto';
+import { CreateMovieDto, DeleteMovieDto, ReadMovieDto, UpdateMovieDto } from './movie.dto';
 import { EmptyFieldException } from './exceptions/exceptions.post';
 import { EmptySearchException, NoMoviesFoundException } from './exceptions/exceptions.get';
 import { EmptyUpdateFieldsException, MovieNotFoundException } from './exceptions/exceptions.put';
+import { EmptyNameException, MovieDeleteNotFoundException } from './exceptions/exceptions.delete';
 
 @Injectable()
 export class MovieService {
@@ -55,5 +56,18 @@ export class MovieService {
     } catch (error) {
       throw new EmptyUpdateFieldsException();
     }
+  }
+
+  //DELETE
+  async deleteMovie(deleteMovieDto: DeleteMovieDto): Promise<void> {
+    const { name } = deleteMovieDto;
+
+    if (!name) throw new EmptyNameException();
+
+    const movie = await this.movieRepository.findOne({ where: { name } });
+
+    if (!movie) throw new MovieDeleteNotFoundException();
+
+    await this.movieRepository.remove(movie);
   }
 }
