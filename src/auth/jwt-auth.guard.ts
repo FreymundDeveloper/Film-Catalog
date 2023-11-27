@@ -15,15 +15,17 @@ export class JwtAuthGuard implements CanActivate {
 
   private async validateToken(authHeader: string): Promise<boolean> {
     if (!authHeader || !authHeader.startsWith('Bearer ')) {
+      console.log('Invalid Token');
       return false;
     }
 
     const token = authHeader.split(' ')[1];
 
     try {
-      await this.jwtService.verifyAsync(token);
+      await this.jwtService.verifyAsync(token, { secret: 'The#whale?holed?the#ship' });
       return true;
     } catch (error) {
+      console.error('Erro in token:', error);
       return false;
     }
   }
