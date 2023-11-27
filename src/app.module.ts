@@ -5,6 +5,7 @@ import { MovieModule } from './movie/movie.module';
 import { setupSwagger } from './swagger';
 import { INestApplication } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -12,6 +13,7 @@ import { NestFactory } from '@nestjs/core';
       load: [__dirname + '/**/*.entity{.ts,.js}'],
       ...require('../ormconfig.postgres.json'),
     }),
+    AuthModule,
     RedisModule,
     MovieModule,
   ],
