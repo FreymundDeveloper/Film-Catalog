@@ -24,9 +24,6 @@ $ npm install
 
 # Running
 $ npm run start
-
-# unit tests
-$ npm run test
 ```
 ## Documentation
 
