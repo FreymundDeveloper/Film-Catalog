@@ -12,7 +12,7 @@ About the technologies required and my experience with them:
 * Redis - 2 months of experience;
 * PostgreSQL - First time used in a real application. I already had contact with her in the Database course at college;
 * API RESTful - 1 year and a half of experience and 9 months of professional experience;
-* Google AppEngine - First contact (I usually use AWS or DigitalOcean).
+* Deploy Tecnologie - 1 month and a half experience(First contact with Google AppEngine).
 
 ## Running the app
 
