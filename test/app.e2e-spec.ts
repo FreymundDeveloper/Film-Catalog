@@ -5,8 +5,7 @@ import { MovieService } from '../src/movie/movie.service';
 import { NestFactory } from '@nestjs/core';
 import { INestApplication } from '@nestjs/common';
 
-// run: npm test -- -c test/jest-e2e.json --detectOpenHandles
-describe('MovieController (e2e)', () => {
+describe('Movie App Tests (e2e)', () => {
   let app;
   let service: MovieService;
   let module: INestApplication;
@@ -26,7 +25,7 @@ describe('MovieController (e2e)', () => {
   });
 
   it('Testing token generate', async () => {
-    const response = await request(app.getHttpServer())
+    await request(app.getHttpServer())
       .get('/auth/login')
       .expect(200);
   });
