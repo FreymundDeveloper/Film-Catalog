@@ -1,40 +1,37 @@
-version: '3'
+version: '3.8'
 
 services:
+  movies:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    container_name: movies
+    ports:
+      - "3000:3000"
+    depends_on:
+      - postgres
+      - redis
+    environment:
+      POSTGRES_HOST: postgres
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 13_mund_2
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
+
   postgres:
     image: postgres:latest
     container_name: my-postgres
+    restart: always
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: 13_mund_2
     ports:
       - "5432:5432"
-    networks:
-      - my-net
-    hostname: postgres 
-  
+
   redis:
     image: redis:latest
+    command: ["redis-server", "--bind", "redis", "--port", "6379"]
     container_name: my-redis
-    ports:
-      - "6379:6379"
-    networks:
-      - my-net
-      
-  my_app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    container_name: movies
-    depends_on:
-      - postgres
-      - redis
-    ports:
-      - "80:80"
-    networks:
-      - my-net
-    hostname: my_app
-
-networks:
-  my-net:

@@ -6,7 +6,7 @@ export class RedisService {
   private readonly redis: Redis;
 
   constructor() {
-    this.redis = new Redis();
+    this.redis = new Redis({ host: 'redis'});
   }
 
   getClient() {
