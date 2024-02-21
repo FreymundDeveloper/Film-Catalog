@@ -1,27 +1,38 @@
 import { Test, TestingModule } from '@nestjs/testing';
 import * as request from 'supertest';
 import { AppModule } from '../src/app.module';
+import { MovieService } from '../src/movie/movie.service';
+import { NestFactory } from '@nestjs/core';
+import { INestApplication } from '@nestjs/common';
 
 // run: npm test -- -c test/jest-e2e.json --detectOpenHandles
 describe('MovieController (e2e)', () => {
   let app;
-  let authToken: string;
+  let service: MovieService;
+  let module: INestApplication;
 
   beforeAll(async () => {
     const moduleFixture: TestingModule = await Test.createTestingModule({
-      imports: [AppModule],
+      imports: [
+        AppModule
+      ],
     }).compile();
+
+    module = await NestFactory.create(AppModule);
+    service = module.get(MovieService);
 
     app = moduleFixture.createNestApplication();
     await app.init();
   });
 
-  it('Testing token', async () => {
+  it('Testing token generate', async () => {
     const response = await request(app.getHttpServer())
       .get('/auth/login')
       .expect(200);
+  });
 
-    authToken = `Bearer ${response.body.token}`;
+  it('Test Service integrity', async () => {
+    expect(service).toBeDefined();
   });
   
   afterAll(async () => {
