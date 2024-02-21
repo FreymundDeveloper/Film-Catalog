@@ -55,8 +55,8 @@ $ docker-compose up --build
 
 ## Time spent and difficulties
 
-In total I spent around 26 hours developing the project. My biggest time consumption was configuring the nest environment and integrating TypeORM with PostgreSQL. It took me a total of 12 hours in this process, the main reason being my lack of contact with these technologies.Another factor that was a huge time consuming for the development of the project was the Docker configuration. It took me a total of 6 hours in this process, due to an error communicating with the database, which in the end I was unable to resolve:
+In total I spent around 30 hours developing the project. My biggest time consumption was configuring the nest environment and integrating TypeORM with PostgreSQL. It took me a total of 12 hours in this process, the main reason being my lack of contact with these technologies.Another factor that was a huge time consuming for the development of the project was the Docker configuration. It took me a total of 6 hours in this process, due to an error communicating with the database, which in the end I was unable to resolve:
 
 * ERROR [TypeOrmModule] Unable to connect to the database. Retrying (1)... 2023-11-26 23:03:31 Error: connect ECONNREFUSED 127.0.0.1:5432
 
-Another 5 hours were spent trying to configure the application deployment process for Google AppEngine and the other 3 hours were used to develop CRUD itself, along with configuring Swagger and Redis.
+Another 9 hours were spent trying to configure the application deployment process for Google AppEngine and the other 3 hours were used to develop CRUD itself, along with configuring Swagger and Redis.
