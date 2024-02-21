@@ -45,7 +45,9 @@ To access the complete and detailed API documentation, use the Swagger route.
 
 ## Docker
 
-**Warning**: It is necessary to change the “host” field in the “ormconfig.postgres.json” and “ormconfig.redis.json” files. Change the “host” from “localhost” to the name of the database the configuration belongs to (“postgres” or “redis”). This action is necessary due to a conflict between the configuration files and the default builder configurations in the docker containers themselves.
+**Warning**: It is necessary to change the “host” field in the “ormconfig.postgres.json” and “ormconfig.redis.json” files. Change the “host” from “localhost” to the name of the database the configuration belongs to (“postgres” or “redis”). 
+
+**Explanation**: This action is necessary due to a conflict between the configuration files and the default builder configurations in the docker containers themselves.
 
 ```bash
 # Build
